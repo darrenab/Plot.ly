@@ -1,8 +1,7 @@
 
 
 function buildMetadata(sample) {
-  console.log("i'm in buildMetadata")
-  d3.json(`/metadata/${sample}`).then(function(d)
+    d3.json(`/metadata/${sample}`).then(function(d)
     {console.log(Object.entries(d));
       
       var clear = d3.select('#sample-metadata');
@@ -14,8 +13,7 @@ Object.entries(d).forEach(([key,value])=>{
   clear.append('h6').text(`${key}:${value}`);
 });
 
-// clear.selectAll('h6').data(Object.entries(d)).enter().append('h6')
-// .text(function(d) {return `${d[0]}: ${d[1]}`;});
+
   
   })
   
@@ -31,8 +29,7 @@ Object.entries(d).forEach(([key,value])=>{
     }
 
 function buildCharts(sample) {
-  console.log("i'm in buildCharts")
-  d3.json(`/samples/${sample}`).then(function(d){
+   d3.json(`/samples/${sample}`).then(function(d){
   // @TODO: Use `d3.json` to fetch the sample data for the plots
     
     var otu_ids = d.otu_ids
@@ -80,7 +77,7 @@ function buildCharts(sample) {
 }
 
 function init() {
-  console.log("I'm in init")
+ 
   // Grab a reference to the dropdown select element
   var selector = d3.select("#selDataset");
 
@@ -102,8 +99,7 @@ function init() {
 }
 // this is only called on a change event
 function optionChanged(newSample) {
-  console.log("i'm in optionChanged")
-  console.log(newSample)
+    console.log(newSample)
   // Fetch new data each time a new sample is selected
   buildCharts(newSample);
   buildMetadata(newSample);
